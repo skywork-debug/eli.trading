@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>破框動能指標 線上說明會 報名 ｜ 8/26</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#050403;
+  --bg-2:#0B0907;
+  --gold:#C9A24D;
+  --gold-bright:#F0D89C;
+  --gold-mid:#DCBA6B;
+  --gold-deep:#8A6420;
+  --white:#F4F1EA;
+  --dim:#A79A83;
+  --hair:rgba(201,162,77,.26);
+  --hair-soft:rgba(201,162,77,.14);
+  --field:rgba(255,255,255,.028);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+
+body{
+  font-family:'Noto Serif TC',serif;
+  background:var(--bg);
+  color:var(--white);
+  line-height:1.6;
+  min-height:100vh;
+  padding:clamp(18px,4vw,56px) clamp(14px,4vw,28px);
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* 環境光：右上金色暈染 + 底部微光 */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(60% 45% at 82% 8%,  rgba(201,162,77,.16), transparent 62%),
+    radial-gradient(50% 40% at 12% 96%, rgba(201,162,77,.09), transparent 65%),
+    radial-gradient(90% 70% at 50% 40%, rgba(20,15,8,.5), transparent 70%);
+}
+/* 點陣質感（呼應簡報的粒子地球） */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(201,162,77,.11) .8px, transparent .8px);
+  background-size:22px 22px;
+  mask-image:radial-gradient(80% 60% at 78% 12%, #000, transparent 70%);
+  -webkit-mask-image:radial-gradient(80% 60% at 78% 12%, #000, transparent 70%);
+}
+
+.wrap{position:relative;z-index:1;max-width:660px;margin:0 auto}
+
+/* ── 卡片 ── */
+.card{
+  background:linear-gradient(165deg, rgba(255,255,255,.045), rgba(255,255,255,.012) 45%, rgba(201,162,77,.02));
+  border:1px solid var(--hair);
+  border-radius:16px;
+  padding:clamp(26px,5.5vw,52px);
+  position:relative;
+  box-shadow:0 24px 70px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.05);
+}
+/* 上緣金線高光 */
+.card::before{
+  content:'';position:absolute;top:-1px;left:12%;right:12%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold-bright),transparent);
+  opacity:.55;
+}
+
+/* ── 表頭 ── */
+.eyebrow{
+  display:flex;align-items:center;gap:14px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:14px;font-weight:600;letter-spacing:5px;
+  color:var(--gold);margin-bottom:22px;text-transform:uppercase;
+}
+.eyebrow .bar{
+  flex:1;height:1px;max-width:120px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+}
+.eyebrow .no{color:var(--gold-bright);letter-spacing:2px}
+
+h1{
+  font-size:clamp(34px,8.5vw,54px);font-weight:900;
+  line-height:1.2;letter-spacing:1px;margin-bottom:6px;
+  background:linear-gradient(178deg,#FBEFCF 0%,#EDD597 32%,#C9A24D 66%,#8F6A22 100%);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;
+  filter:drop-shadow(0 2px 14px rgba(201,162,77,.22));
+}
+.sub{
+  font-size:clamp(18px,4.4vw,26px);font-weight:700;
+  letter-spacing:1px;color:var(--white);line-height:1.45;
+}
+
+.lede{
+  font-size:15px;line-height:1.9;color:var(--dim);
+  margin-top:20px;padding-top:20px;
+  border-top:1px solid var(--hair-soft);
+}
+
+/* ── 場次資訊 ── */
+.highlights{display:flex;flex-direction:column;gap:14px;margin-top:24px}
+.hl{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:18px 20px;border-radius:12px;
+  border:1px solid rgba(201,162,77,.20);
+  border-left:3px solid var(--gold);
+  background:linear-gradient(100deg,rgba(201,162,77,.075),rgba(201,162,77,.015));
+}
+.hl svg{flex:none;margin-top:4px}
+.hl .t{
+  font-size:17px;font-weight:700;color:var(--gold-bright);
+  line-height:1.45;margin-bottom:7px;letter-spacing:.3px;
+}
+.hl .d{font-size:14.5px;color:var(--dim);line-height:1.8}
+
+.meta{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px;margin-top:24px;
+}
+.meta-item{
+  border:1px solid var(--hair-soft);
+  border-radius:12px;
+  padding:16px 18px;
+  background:rgba(255,255,255,.018);
+}
+.meta-item .k{
+  font-family:'Cormorant Garamond',serif;
+  font-size:12px;letter-spacing:3px;color:var(--gold);
+  margin-bottom:8px;text-transform:uppercase;
+}
+.meta-item .v{font-size:17px;font-weight:700;color:var(--white);line-height:1.4}
+.meta-item .v small{display:block;font-size:13px;font-weight:400;color:var(--dim);margin-top:4px}
+
+/* ── 門檻提示框（對應簡報下方那條重點框） ── */
+.gate{
+  display:flex;gap:16px;align-items:flex-start;
+  margin-top:16px;padding:20px;
+  border:1px solid var(--hair);
+  border-radius:12px;
+  background:linear-gradient(100deg, rgba(201,162,77,.10), rgba(201,162,77,.02));
+}
+.gate svg{flex:none;margin-top:2px}
+.gate .t{font-size:17px;font-weight:700;line-height:1.5;margin-bottom:6px}
+.gate .t em{font-style:normal;color:var(--gold-bright)}
+.gate .d{font-size:14px;color:var(--dim);line-height:1.7}
+
+/* ── 分隔 ── */
+.rule{
+  height:1px;margin:36px 0 30px;
+  background:linear-gradient(90deg,var(--gold),rgba(201,162,77,.14) 55%,transparent);
+}
+.sect{
+  font-family:'Cormorant Garamond',serif;
+  font-size:13px;letter-spacing:5px;color:var(--gold);
+  text-transform:uppercase;margin-bottom:24px;
+  display:flex;align-items:center;gap:12px;
+}
+.sect::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--hair),transparent)}
+
+/* ── 欄位 ── */
+.field{margin-bottom:26px}
+label{
+  display:block;font-size:16px;font-weight:700;
+  margin-bottom:10px;letter-spacing:.4px;color:var(--white);
+}
+label .req{color:var(--gold-bright);margin-left:5px}
+label .note{
+  display:block;font-size:13px;font-weight:400;color:var(--dim);
+  margin-top:5px;letter-spacing:0;line-height:1.6;
+}
+
+input[type=text],input[type=tel],input[type=email],textarea{
+  width:100%;
+  font-family:inherit;font-size:16px;font-weight:500;
+  color:var(--white);
+  background:var(--field);
+  border:1px solid rgba(201,162,77,.20);
+  border-radius:10px;
+  padding:15px 17px;
+  transition:border-color .2s, box-shadow .2s, background .2s;
+  -webkit-appearance:none;appearance:none;
+}
+textarea{resize:vertical;min-height:104px;line-height:1.7}
+input::placeholder,textarea::placeholder{color:rgba(167,154,131,.5);font-weight:400}
+
+input:focus,textarea:focus{
+  outline:none;
+  border-color:var(--gold);
+  background:rgba(201,162,77,.05);
+  box-shadow:0 0 0 3px rgba(201,162,77,.13);
+}
+
+/* ── 單選（績效狀況） ── */
+.radios{display:flex;flex-direction:column;gap:10px}
+.radio{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:16px 18px;cursor:pointer;
+  border:1px solid rgba(201,162,77,.16);
+  border-radius:11px;
+  background:rgba(255,255,255,.015);
+  transition:border-color .18s, background .18s;
+}
+.radio:hover{border-color:rgba(201,162,77,.4);background:rgba(201,162,77,.04)}
+.radio input{position:absolute;opacity:0;pointer-events:none}
+.dot{
+  flex:none;width:19px;height:19px;margin-top:2px;border-radius:50%;
+  border:1px solid rgba(201,162,77,.5);
+  position:relative;transition:border-color .18s;
+}
+.dot::after{
+  content:'';position:absolute;inset:4px;border-radius:50%;
+  background:linear-gradient(180deg,var(--gold-bright),var(--gold));
+  transform:scale(0);transition:transform .18s ease;
+}
+.radio input:checked ~ .dot{border-color:var(--gold-bright)}
+.radio input:checked ~ .dot::after{transform:scale(1)}
+.radio input:checked ~ .txt{color:var(--white)}
+.radio:has(input:checked){
+  border-color:var(--gold);
+  background:linear-gradient(100deg,rgba(201,162,77,.12),rgba(201,162,77,.03));
+}
+.radio input:focus-visible ~ .dot{box-shadow:0 0 0 3px rgba(201,162,77,.3)}
+.txt{font-size:15.5px;font-weight:500;color:var(--dim);line-height:1.55;transition:color .18s}
+.txt b{display:block;font-weight:700;color:var(--white);margin-bottom:2px;font-size:16px}
+
+/* ── 開戶確認勾選 ── */
+.check-row{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:18px;cursor:pointer;
+  border:1px solid rgba(201,162,77,.2);
+  border-radius:11px;
+  background:rgba(255,255,255,.015);
+  transition:border-color .18s, background .18s;
+}
+.check-row:has(input:checked){border-color:var(--gold);background:rgba(201,162,77,.07)}
+.check-row input{position:absolute;opacity:0;pointer-events:none}
+.box{
+  flex:none;width:19px;height:19px;margin-top:2px;border-radius:5px;
+  border:1px solid rgba(201,162,77,.5);
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color .18s, background .18s;
+}
+.box svg{opacity:0;transform:scale(.5);transition:.18s}
+.check-row input:checked ~ .box{background:linear-gradient(180deg,var(--gold-mid),var(--gold-deep));border-color:var(--gold-bright)}
+.check-row input:checked ~ .box svg{opacity:1;transform:scale(1)}
+.check-row .txt{font-size:15px}
+
+/* 勾選後才展開的欄位 */
+.reveal{
+  display:grid;grid-template-rows:0fr;
+  opacity:0;margin-top:0;
+  transition:grid-template-rows .32s ease, opacity .28s ease, margin-top .32s ease;
+}
+.reveal > div{overflow:hidden}
+.reveal.open{grid-template-rows:1fr;opacity:1;margin-top:18px}
+.reveal .field{margin-bottom:0}
+.reveal .inner{
+  padding:20px;border-radius:11px;
+  border:1px solid rgba(201,162,77,.22);
+  border-left:3px solid var(--gold);
+  background:linear-gradient(100deg,rgba(201,162,77,.07),rgba(201,162,77,.015));
+}
+
+/* 驗證錯誤 */
+.field.invalid input,
+.field.invalid textarea{border-color:#C4553C;box-shadow:0 0 0 3px rgba(196,85,60,.12)}
+.field.invalid .radios,
+.field.invalid .check-row{outline:1px solid #C4553C;outline-offset:4px;border-radius:12px}
+.err{display:none;font-size:13.5px;color:#E08163;margin-top:9px;font-weight:500}
+.field.invalid .err{display:block}
+
+.hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+
+/* ── 送出 ── */
+.submit{
+  width:100%;margin-top:10px;
+  font-family:inherit;font-size:19px;font-weight:900;letter-spacing:4px;
+  color:#231803;
+  background:linear-gradient(180deg,#FBEFCF,#E3C57F 38%,#C9A24D 70%,#A57D2C);
+  border:none;border-radius:44px;
+  padding:20px;cursor:pointer;
+  box-shadow:0 8px 28px rgba(201,162,77,.24), inset 0 1px 0 rgba(255,255,255,.6);
+  transition:transform .16s, box-shadow .16s, opacity .16s;
+}
+.submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 34px rgba(201,162,77,.36), inset 0 1px 0 rgba(255,255,255,.6)}
+.submit:active:not(:disabled){transform:translateY(0)}
+.submit:disabled{opacity:.45;cursor:not-allowed}
+.submit:focus-visible{outline:2px solid var(--gold-bright);outline-offset:4px}
+
+.formnote{text-align:center;font-size:13.5px;color:var(--dim);margin-top:20px;line-height:1.8}
+
+.banner{
+  display:none;margin-bottom:24px;padding:16px 18px;
+  border-radius:11px;font-size:14.5px;font-weight:500;line-height:1.7;
+  background:rgba(196,85,60,.10);
+  border:1px solid rgba(196,85,60,.4);
+  color:#EFA184;
+}
+.banner.show{display:block}
+
+/* ══════════ 完成頁（送出後顯示） ══════════ */
+.done{display:none}
+.done.show{display:block;animation:rise .55s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.done .card + .card{margin-top:22px}
+
+/* 報名確認 */
+.confirm{text-align:center}
+.check-ring{
+  width:82px;height:82px;margin:0 auto 26px;border-radius:50%;
+  border:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle,rgba(201,162,77,.16),transparent 70%);
+  box-shadow:0 0 0 10px rgba(201,162,77,.05), 0 0 40px rgba(201,162,77,.18);
+}
+.done-title,.course-title{
+  font-weight:900;line-height:1.26;
+  background:linear-gradient(178deg,#FBEFCF,#EDD597 35%,#C9A24D 75%,#8F6A22);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.done-title{font-size:clamp(30px,7vw,42px);margin-bottom:16px}
+.course-title{font-size:clamp(28px,6.5vw,40px);margin-bottom:8px}
+.confirm p{font-size:16.5px;line-height:1.9;color:var(--white)}
+.done .small{font-size:14px;color:var(--dim);line-height:1.8}
+
+.recap{
+  display:inline-flex;align-items:center;gap:12px;margin-top:22px;
+  padding:12px 22px;border:1px solid var(--hair-soft);border-radius:40px;
+  background:rgba(201,162,77,.05);
+  font-size:15px;font-weight:700;letter-spacing:.5px;
+}
+.recap b{color:var(--gold-mid);font-weight:700}
+
+.btn-gold{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  width:100%;margin:30px 0 14px;
+  font-family:inherit;font-size:19px;font-weight:900;letter-spacing:2px;
+  color:#231803;text-decoration:none;
+  background:linear-gradient(180deg,#FBEFCF,#E3C57F 38%,#C9A24D 70%,#A57D2C);
+  border-radius:44px;padding:20px;
+  box-shadow:0 8px 28px rgba(201,162,77,.24), inset 0 1px 0 rgba(255,255,255,.6);
+  transition:transform .16s, box-shadow .16s;
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(201,162,77,.36), inset 0 1px 0 rgba(255,255,255,.6)}
+.btn-gold:focus-visible{outline:2px solid var(--gold-bright);outline-offset:4px}
+
+.btn-ghost{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;margin-top:22px;
+  font-family:inherit;font-size:17px;font-weight:700;letter-spacing:1.5px;
+  color:var(--gold-mid);text-decoration:none;
+  border:1px solid var(--gold);border-radius:44px;padding:18px;
+  background:rgba(201,162,77,.04);
+  transition:background .18s, color .18s;
+}
+.btn-ghost:hover{background:rgba(201,162,77,.14);color:var(--gold-bright)}
+
+/* 銜接 */
+.bridge{
+  text-align:center;margin:34px 0 8px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:13px;letter-spacing:6px;color:var(--gold);text-transform:uppercase;
+}
+.bridge::before,.bridge::after{
+  content:'';display:block;width:1px;height:26px;margin:0 auto;
+  background:linear-gradient(180deg,transparent,var(--gold));
+}
+.bridge::after{background:linear-gradient(180deg,var(--gold),transparent);margin-top:10px}
+.bridge span{display:block;margin-top:10px}
+
+/* 實戰班 */
+.done .lede{
+  font-size:15px;line-height:1.95;color:var(--dim);
+  margin-top:20px;padding-top:20px;border-top:1px solid var(--hair-soft);
+}
+/* 日期群組（可展開、可勾選） */
+.daygroups{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+
+.daygroup{
+  border:1px solid var(--hair-soft);border-radius:12px;
+  background:rgba(255,255,255,.018);overflow:hidden;
+}
+
+.day-head{
+  display:flex;align-items:center;gap:16px;width:100%;
+  padding:19px 20px;background:none;border:none;cursor:pointer;
+  font-family:inherit;text-align:left;color:inherit;
+}
+.day-head:focus-visible{outline:2px solid var(--gold);outline-offset:-3px}
+.day-head .d-date{
+  flex:none;font-size:20px;font-weight:900;color:var(--gold-mid);line-height:1.2;
+}
+.day-head .d-date small{
+  display:block;font-size:12.5px;font-weight:500;color:var(--dim);margin-top:3px;
+}
+.day-head .d-state{
+  flex:1;font-size:14.5px;font-weight:500;color:var(--dim);line-height:1.5;
+}
+.day-head .chev{flex:none;transition:transform .3s ease}
+.daygroup.open .day-head .chev{transform:rotate(180deg)}
+
+.day-body{
+  display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows .3s ease;
+}
+.day-body > div{overflow:hidden}
+.daygroup.open .day-body{grid-template-rows:1fr}
+.day-inner{padding:2px 14px 16px 14px;display:flex;flex-direction:column;gap:10px}
+
+.opt{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:16px 17px;border-radius:11px;
+  border:1px solid rgba(201,162,77,.16);
+  background:rgba(0,0,0,.22);
+}
+.opt-txt{flex:1;min-width:0}
+.opt-txt b{
+  display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+  font-size:16.5px;font-weight:700;color:var(--white);line-height:1.4;
+}
+.opt-txt small{
+  display:block;font-size:13px;color:var(--dim);line-height:1.7;margin-top:6px;
+}
+.tag{
+  flex:none;font-family:'Cormorant Garamond',serif;
+  font-size:12.5px;font-weight:600;letter-spacing:1.5px;
+  padding:3px 11px;border-radius:20px;
+  border:1px solid rgba(201,162,77,.45);color:var(--gold-mid);
+  background:rgba(201,162,77,.07);
+}
+
+.pillars{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));
+  gap:12px;margin-top:26px;
+}
+.pillar{
+  border:1px solid var(--hair-soft);border-radius:12px;
+  padding:20px 18px;background:rgba(255,255,255,.018);
+}
+.pillar .n{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:600;color:var(--gold);
+  letter-spacing:1px;margin-bottom:12px;
+}
+.pillar .t{font-size:17px;font-weight:700;margin-bottom:7px;line-height:1.4}
+.pillar .d{font-size:13.5px;color:var(--dim);line-height:1.75}
+
+.callout{
+  display:flex;gap:16px;align-items:flex-start;margin-top:26px;padding:20px;
+  border:1px solid var(--hair);border-radius:12px;
+  background:linear-gradient(100deg, rgba(201,162,77,.10), rgba(201,162,77,.02));
+}
+.callout svg{flex:none;margin-top:2px}
+.callout .t{font-size:16.5px;font-weight:700;line-height:1.55;margin-bottom:6px}
+.callout .t em{font-style:normal;color:var(--gold-bright)}
+.callout .d{font-size:14px;color:var(--dim);line-height:1.75}
+
+.footer{
+  text-align:center;margin-top:32px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:12px;font-weight:600;letter-spacing:5px;
+  color:rgba(201,162,77,.42);
+}
+.disc{
+  text-align:center;margin-top:14px;
+  font-size:12px;color:rgba(167,154,131,.55);line-height:1.7;
+}
+
+@media (max-width:430px){
+  .card{border-radius:14px}
+  .gate,.callout{flex-direction:column;gap:12px}
+  .session{flex-direction:column;gap:10px}
+  .session .date{width:auto;display:flex;align-items:baseline;gap:9px}
+  .session .date small{margin-top:0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ══════════ 表單 ══════════ -->
+  <div class="card" id="formCard">
+
+    <div class="eyebrow">
+      <span>Online Briefing</span>
+      <span class="bar"></span>
+      <span class="no">08 / 26</span>
+    </div>
+
+    <h1>破框動能指標</h1>
+    <div class="sub">線上說明會｜首次公開</div>
+
+    <p class="lede">
+      從破框策略到破框動能指標<br>
+      伊萊老師把「方向怎麼判讀」這件事又往前推了一步<br>
+      這套全新指標將在 8/26 首次公開<br>
+      將盤中動能轉化為客觀數據<br>
+      輔助你更好的判讀盤面
+    </p>
+
+    <div class="highlights">
+      <div class="hl">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#DCBA6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg>
+        <div>
+          <div class="t">8/26 線上首發公開</div>
+          <div class="d">帶你快速掌握動能指標的基礎用法，並開放專屬 Q&amp;A 解答疑問。</div>
+        </div>
+      </div>
+
+      <div class="hl">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#DCBA6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg>
+        <div>
+          <div class="t">9 月實體課進階分享</div>
+          <div class="d">解鎖更完整的策略細節！伊萊老師將親自傳授如何利用指標進行「關鍵加碼」與「波段操作」。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="meta">
+      <div class="meta-item">
+        <div class="k">Date</div>
+        <div class="v">8/26（三）<small>20:30 – 22:30</small></div>
+      </div>
+      <div class="meta-item">
+        <div class="k">Format</div>
+        <div class="v">線上直播<small>連結於會前發送</small></div>
+      </div>
+    </div>
+
+    <div class="gate">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#DCBA6B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2.5l7.5 3.2v5.1c0 4.6-3.1 8.9-7.5 10.7-4.4-1.8-7.5-6.1-7.5-10.7V5.7L12 2.5z"/>
+        <path d="M8.8 11.9l2.2 2.2 4.2-4.4"/>
+      </svg>
+      <div>
+        <div class="t">參加門檻：完成 <em>BAB 開戶 KYC</em></div>
+        <div class="d">請先確認開戶手續已經完成，再填表報名。尚未開戶的話，表單送出後也無法安排入場。</div>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+    <div class="sect">Registration</div>
+
+    <div class="banner" id="banner"></div>
+
+    <form id="form" novalidate>
+
+      <div class="field" id="f-name">
+        <label for="name">中文姓名<span class="req">＊</span></label>
+        <input type="text" id="name" placeholder="王小明" autocomplete="name" maxlength="30">
+        <div class="err">請填寫中文姓名</div>
+      </div>
+
+      <div class="field" id="f-lineid">
+        <label for="lineid">
+          LINE ID<span class="req">＊</span>
+          <span class="note">在 LINE 的「設定 → 個人檔案 → ID」可以查到</span>
+        </label>
+        <input type="text" id="lineid" placeholder="例：eli_trades" maxlength="50" autocomplete="off">
+        <div class="err">請填寫 LINE ID</div>
+      </div>
+
+      <div class="field" id="f-linename">
+        <label for="linename">
+          LINE 名稱<span class="req">＊</span>
+          <span class="note">你在 LINE 上顯示的暱稱，方便我們核對是誰</span>
+        </label>
+        <input type="text" id="linename" placeholder="例：小明" maxlength="50" autocomplete="off">
+        <div class="err">請填寫 LINE 名稱</div>
+      </div>
+
+      <div class="field" id="f-phone">
+        <label for="phone">手機號碼<span class="req">＊</span></label>
+        <input type="tel" id="phone" placeholder="0912345678" autocomplete="tel" inputmode="numeric" maxlength="15">
+        <div class="err">請填寫正確的手機號碼（09 開頭 10 碼）</div>
+      </div>
+
+      <div class="field" id="f-email">
+        <label for="email">
+          電子信箱<span class="req">＊</span>
+          <span class="note">務必確認拼字正確，入場連結會寄到這裡</span>
+        </label>
+        <input type="email" id="email" placeholder="you@example.com" autocomplete="email" maxlength="80">
+        <div class="err">請填寫正確的電子信箱</div>
+      </div>
+
+      <div class="field" id="f-perf">
+        <label>近三個月 真倉／模擬倉 交易績效狀況<span class="req">＊</span></label>
+        <div class="radios">
+          <label class="radio">
+            <input type="radio" name="perf" value="獲利｜無論多少都算獲利">
+            <span class="dot"></span>
+            <span class="txt"><b>獲利</b>無論多少都算獲利</span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="perf" value="不賺不賠｜沒有特別突出的績效">
+            <span class="dot"></span>
+            <span class="txt"><b>不賺不賠</b>沒有特別突出的績效</span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="perf" value="虧損｜還沒有辦法做到月績效獲利">
+            <span class="dot"></span>
+            <span class="txt"><b>虧損</b>還沒有辦法做到月績效獲利</span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="perf" value="沒有特別統計">
+            <span class="dot"></span>
+            <span class="txt"><b>沒有特別統計</b></span>
+          </label>
+        </div>
+        <div class="err">請選擇一項</div>
+      </div>
+
+      <div class="field" id="f-problem">
+        <label for="problem">
+          近期在交易中所遇到的問題<span class="req">＊</span>
+          <span class="note">寫得越具體，說明會上越有機會直接被拿出來講</span>
+        </label>
+        <textarea id="problem" placeholder="例如：抓不到進場點、一賠就想凹單、看不懂什麼時候該停手" maxlength="400"></textarea>
+        <div class="err">請簡單描述你遇到的問題</div>
+      </div>
+
+      <!-- ↓ 這一格是我加的開戶確認，用不到就整個 field 刪掉 -->
+      <div class="field" id="f-kyc">
+        <label class="check-row">
+          <input type="checkbox" id="kyc">
+          <span class="box">
+            <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.6L4 7.6L10 1.2" stroke="#231803" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="txt">我已完成 BAB 開戶與 KYC 手續</span>
+        </label>
+        <div class="err">請先完成開戶再報名</div>
+
+        <!-- 勾選後才展開 -->
+        <div class="reveal" id="revealAcc">
+          <div><div class="inner field" id="f-acc">
+            <label for="account">
+              BAB MARKETS 真實帳戶號碼<span class="req">＊</span>
+              <span class="note">登入 BAB 交易平台或 App 即可查到，用來核對開戶資格</span>
+            </label>
+            <input type="text" id="account" placeholder="例：300123" inputmode="numeric" maxlength="20" autocomplete="off">
+            <div class="err">請填寫 BAB 真實帳戶號碼</div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="hp" aria-hidden="true">
+        <label for="website">Website</label>
+        <input type="text" id="website" tabindex="-1" autocomplete="off">
+      </div>
+
+      <button type="submit" class="submit" id="btn">送出報名</button>
+    </form>
+  </div>
+
+  <!-- ══════════ 完成頁（送出後才顯示） ══════════ -->
+  <div class="done" id="doneCard">
+
+    <!-- ① 報名確認 -->
+    <div class="card confirm">
+      <div class="check-ring">
+        <svg width="34" height="26" viewBox="0 0 34 26" fill="none">
+          <path d="M2 13.5L12 23L32 2.5" stroke="#DCBA6B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <h2 class="done-title">報名完成</h2>
+      <p>入場連結、會前提醒<br>會透過 Email 寄送給大家</p>
+
+      <div class="recap">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#DCBA6B" stroke-width="1.6" stroke-linecap="round">
+          <rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>
+        </svg>
+        8/26（三）<b>20:30 – 22:30</b>
+      </div>
+
+      <a class="btn-gold" href="https://lin.ee/RmLYNkQ" target="_blank" rel="noopener">
+        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.9 9.9 0 0 1-2.6-.3L4 21l1.3-3.9A8.2 8.2 0 0 1 3 11.5C3 6.8 7 3 12 3s9 3.8 9 8.5z"/>
+        </svg>
+        私訊官方 LINE 小幫手
+      </a>
+
+      <p class="small">有任何問題都可以直接在 LINE 上詢問<br>若沒收到信，也請確認一下垃圾郵件匣</p>
+    </div>
+
+    <!-- ② 銜接 -->
+    <div class="bridge"><span>Next Step</span></div>
+
+    <!-- ③ 實戰班 -->
+    <div class="card">
+      <div class="eyebrow">
+        <span>On-site &amp; Live</span>
+        <span class="bar"></span>
+      </div>
+
+      <h2 class="course-title">破框動能指標<br>實戰班</h2>
+      <div class="sub">說明會看懂邏輯，實戰班練到會用</div>
+
+      <p class="lede">
+        說明會講的是這套指標怎麼運作。實戰班要做的，是讓它真的變成你自己的一套流程。
+        帶著看盤、當場拆解你的疑問、把判讀標準一條一條對到你自己的操作習慣上。
+        共四個場次，台中、台北實體場與兩場線上 LIVE，依你方便的時間與地點擇一參加。
+      </p>
+
+      <div class="daygroups">
+
+        <div class="daygroup">
+          <button type="button" class="day-head" aria-expanded="false">
+            <span class="d-date">9/19<small>（六）</small></span>
+            <span class="d-state">台中場 ／ 線上 LIVE</span>
+            <svg class="chev" width="14" height="9" viewBox="0 0 14 9" fill="none">
+              <path d="M1 1.5L7 7.5L13 1.5" stroke="#C9A24D" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <div class="day-body"><div><div class="day-inner">
+
+            <div class="opt">
+              <div class="opt-txt">
+                <b>實體參加　台中場 <span class="tag">NT$500</span></b>
+                <small>登陽 ICC 國際商辦 ICC312<br>台中市烏日區高鐵一路 268 號 3 樓之 12<br>高鐵台中烏日站 3 號出口</small>
+              </div>
+            </div>
+
+            <div class="opt">
+              <div class="opt-txt">
+                <b>線上參加　LIVE 直播 <span class="tag">NT$800</span></b>
+                <small>不受地點限制，直播連結另行發送</small>
+              </div>
+            </div>
+
+          </div></div></div>
+        </div>
+
+        <div class="daygroup">
+          <button type="button" class="day-head" aria-expanded="false">
+            <span class="d-date">9/20<small>（日）</small></span>
+            <span class="d-state">台北場 ／ 線上 LIVE</span>
+            <svg class="chev" width="14" height="9" viewBox="0 0 14 9" fill="none">
+              <path d="M1 1.5L7 7.5L13 1.5" stroke="#C9A24D" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <div class="day-body"><div><div class="day-inner">
+
+            <div class="opt">
+              <div class="opt-txt">
+                <b>實體參加　台北場 <span class="tag">NT$500</span></b>
+                <small>PCBC 鑌亞會議中心 15 樓 AB<br>105 台北市復興北路 99 號 15 樓 AB</small>
+              </div>
+            </div>
+
+            <div class="opt">
+              <div class="opt-txt">
+                <b>線上參加　LIVE 直播 <span class="tag">NT$800</span></b>
+                <small>不受地點限制，直播連結另行發送</small>
+              </div>
+            </div>
+
+          </div></div></div>
+        </div>
+
+      </div>
+
+      <div class="pillars">
+        <div class="pillar">
+          <div class="n">01</div>
+          <div class="t">實際帶盤</div>
+          <div class="d">打開當週真實走勢，一根一根示範怎麼判讀動能與框的邊界。</div>
+        </div>
+        <div class="pillar">
+          <div class="n">02</div>
+          <div class="t">實作演練</div>
+          <div class="d">你自己動手標，老師當場修正，結束時手上有一套能重複執行的流程。</div>
+        </div>
+        <div class="pillar">
+          <div class="n">03</div>
+          <div class="t">個別回應</div>
+          <div class="d">把你報名時寫的問題直接拿出來談，不是講完就散場。</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#DCBA6B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/><path d="M12 8.2v4.6M12 16h.01"/>
+        </svg>
+        <div>
+          <div class="t">實戰班報名，<em>8/26 說明會當天開放</em></div>
+          <div class="d">名額會優先保留給有參加線上說明會的人。課程完整內容與報名方式，當天會一次公布。</div>
+        </div>
+      </div>
+
+      <a class="btn-ghost" href="https://lin.ee/RmLYNkQ" target="_blank" rel="noopener">
+        聯繫官方 LINE 小幫手
+      </a>
+    </div>
+
+  </div>
+
+  <div class="footer">@ELI_____TRADES</div>
+  <p class="disc">本活動為教育性質說明會，不構成投資建議。<br>交易前仍應依自身風險承受度與資金規劃審慎評估。</p>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════
+   設定區：換成你自己的網址
+   ═══════════════════════════════════════════ */
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbzzCUZ1ypia065wgY9gYHtcsu1XBfEqf2g4md2UITOZJLVe8OstmXP2jvwfkasgQXkeMw/exec';
+const EVENT    = '破框動能指標說明會 0826';
+/* ═══════════════════════════════════════════ */
+
+const form   = document.getElementById('form');
+const btn    = document.getElementById('btn');
+const banner = document.getElementById('banner');
+
+const val = id => document.getElementById(id).value.trim();
+const perfVal = () => (document.querySelector('input[name=perf]:checked') || {}).value || '';
+
+const kycBox    = document.getElementById('kyc');
+const revealAcc = document.getElementById('revealAcc');
+
+// 勾選開戶完成後，才展開帳號欄位
+kycBox.addEventListener('change', () => {
+  revealAcc.classList.toggle('open', kycBox.checked);
+  if (kycBox.checked){
+    setTimeout(() => document.getElementById('account').focus({preventScroll:true}), 340);
+  } else {
+    document.getElementById('account').value = '';
+    document.getElementById('f-acc').classList.remove('invalid');
+  }
+});
+
+const rules = [
+  ['f-name',    () => val('name').length > 0],
+  ['f-lineid',  () => val('lineid').length > 0],
+  ['f-linename',() => val('linename').length > 0],
+  ['f-phone',   () => /^09\d{8}$/.test(val('phone').replace(/[\s-]/g,''))],
+  ['f-email',   () => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val('email'))],
+  ['f-perf',    () => perfVal() !== ''],
+  ['f-problem', () => val('problem').length > 0],
+  ['f-kyc',     () => kycBox.checked],
+  // 沒勾就不驗這格，勾了才必填
+  ['f-acc',     () => !kycBox.checked || val('account').length > 0]
+];
+
+// 邊填邊清掉錯誤標記
+form.addEventListener('input', e => {
+  const box = e.target.closest('.field');
+  if (box) box.classList.remove('invalid');
+});
+
+function showBanner(msg){
+  banner.textContent = msg;
+  banner.classList.add('show');
+  banner.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+form.addEventListener('submit', async ev => {
+  ev.preventDefault();
+  banner.classList.remove('show');
+
+  let firstBad = null;
+  rules.forEach(([id, ok]) => {
+    const box   = document.getElementById(id);
+    const valid = ok();
+    box.classList.toggle('invalid', !valid);
+    if (!valid && !firstBad) firstBad = box;
+  });
+  if (firstBad){
+    firstBad.scrollIntoView({behavior:'smooth', block:'center'});
+    const inp = firstBad.querySelector('input,textarea');
+    if (inp && inp.type !== 'radio' && inp.type !== 'checkbox') inp.focus({preventScroll:true});
+    return;
+  }
+
+  // 網址還沒填就先擋下來，不要浪費一次送出
+  if (!ENDPOINT || ENDPOINT.indexOf('script.google.com') === -1){
+    showBanner('尚未設定後端網址：請把 Apps Script 部署後的 /exec 網址填進 ENDPOINT。');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = '送出中';
+
+  const q = new URLSearchParams(location.search);
+  const utm = ['utm_source','utm_medium','utm_campaign','utm_content']
+                .map(k => q.get(k)).filter(Boolean).join(' / ');
+
+  const payload = {
+    event  : EVENT,
+    name   : val('name'),
+    lineid : val('lineid'),
+    linename: val('linename'),
+    phone  : val('phone').replace(/[\s-]/g,''),
+    email  : val('email'),
+    perf   : perfVal(),
+    problem: val('problem'),
+    kyc    : kycBox.checked ? '已完成' : '',
+    account: val('account'),
+    website: val('website'),
+    utm    : utm || (document.referrer || '直接進入'),
+    ua     : navigator.userAgent
+  };
+
+  try {
+    const res = await fetch(ENDPOINT, {
+      method : 'POST',
+      headers: {'Content-Type':'text/plain;charset=utf-8'},
+      body   : JSON.stringify(payload)
+    });
+
+    const raw = await res.text();
+    console.log('[報名表單] 狀態碼', res.status, '回應', raw.slice(0, 300));
+
+    let data;
+    try {
+      data = JSON.parse(raw);
+    } catch {
+      // 回傳的不是 JSON，通常是 Apps Script 吐了 HTML 登入頁或錯誤頁
+      throw new Error('後端沒有回傳 JSON，請確認部署的存取權設為「所有人」，且網址結尾是 /exec');
+    }
+
+    if (data.ok){
+      document.getElementById('formCard').style.display = 'none';
+      document.getElementById('doneCard').classList.add('show');
+      window.scrollTo({top:0, behavior:'smooth'});
+    } else if (data.error === 'duplicate'){
+      showBanner('這支手機號碼已經報名過這一場了，不用再送一次。找不到通知的話，直接在 LINE 上敲我們。');
+      btn.disabled = false; btn.textContent = '送出報名';
+    } else {
+      throw new Error(data.error || 'unknown');
+    }
+  } catch (err) {
+    console.error('[報名表單] 送出失敗', err);
+    showBanner('送出失敗：' + (err.message || err) + '｜若持續發生請私訊 @eli_____trades 報名。');
+    btn.disabled = false;
+    btn.textContent = '送出報名';
+  }
+});
+
+
+// 點日期列展開／收合場次細節
+document.querySelectorAll('.daygroup .day-head').forEach(head => {
+  head.addEventListener('click', () => {
+    const open = head.parentElement.classList.toggle('open');
+    head.setAttribute('aria-expanded', open);
+  });
+});
+</script>
+</body>
+</html>
