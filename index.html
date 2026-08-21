@@ -723,8 +723,8 @@ input:focus,textarea:focus{
         </svg>
       </div>
 
-      <h2 class="done-title">報名完成</h2>
-      <p>入場連結、會前提醒<br>會透過 Email 寄送給大家</p>
+      <h2 class="done-title">資料已送出</h2>
+      <p>請至信箱收「報名確認信」<br>收到才代表報名成功</p>
 
       <div class="recap">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#DCBA6B" stroke-width="1.6" stroke-linecap="round">
@@ -740,7 +740,7 @@ input:focus,textarea:focus{
         私訊官方 LINE 小幫手
       </a>
 
-      <p class="small">有任何問題都可以直接在 LINE 上詢問<br>若沒收到信<br>也請確認一下垃圾郵件匣</p>
+      <p class="small">幾分鐘內沒收到確認信<br>請檢查垃圾郵件匣<br>或私訊官方 LINE 小幫手協助確認</p>
     </div>
 
     <!-- ② 銜接 -->
@@ -840,16 +840,6 @@ input:focus,textarea:focus{
           <div class="n">03</div>
           <div class="t">波段操作</div>
           <div class="d">把盤中判讀延伸到波段節奏<br>學會什麼時候該續抱<br>什麼時候該收手</div>
-        </div>
-      </div>
-
-      <div class="callout">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#DCBA6B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="9"/><path d="M12 8.2v4.6M12 16h.01"/>
-        </svg>
-        <div>
-          <div class="t">實戰班報名，<em>8/26 說明會當天開放</em></div>
-          <div class="d">課程完整內容與報名方式<br>當天會一次公布</div>
         </div>
       </div>
 
@@ -965,41 +955,59 @@ form.addEventListener('submit', async ev => {
     ua     : navigator.userAgent
   };
 
-  try {
-    // no-cors 模式：相容 LINE、IG 等 App 內建瀏覽器
-    // 代價是收不到後端回應，所以只要送出成功就顯示完成頁
-    // 資料照樣進試算表、確認信照樣寄（那些由後端處理，不受影響）
-    const ctrl  = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 25000);
-
-    try {
-      await fetch(ENDPOINT, {
-        method : 'POST',
-        mode   : 'no-cors',
-        headers: {'Content-Type':'text/plain;charset=utf-8'},
-        body   : JSON.stringify(payload),
-        signal : ctrl.signal
-      });
-    } catch (netErr) {
-      throw new Error(netErr.name === 'AbortError'
-        ? '網路較慢，資料可能已送出，請先私訊官方 LINE 小幫手確認，不要重複送出'
-        : '連線失敗，請確認網路後再試一次');
-    } finally {
-      clearTimeout(timer);
-    }
-
-    // no-cors 收不到回應，送出即視為成功
+  // form + 隱藏 iframe 送出：相容 LINE / IG 內建瀏覽器與國外網路
+  // 送出後收不到後端回應，完成頁改以「信箱確認信」為準
+  submitViaIframe(payload, () => {
     document.getElementById('formCard').style.display = 'none';
     document.getElementById('doneCard').classList.add('show');
     window.scrollTo({top:0, behavior:'smooth'});
+  }, () => {
+    showBanner('送出失敗，請確認網路後再試一次｜若持續發生請私訊 @eli_____trades 報名');
+    btn.disabled = false;
+    btn.textContent = '送出報名';
+  });
+});
+
+/**
+ * 用隱藏 iframe + form 送出資料（相容性最高的跨網域送法）
+ * onDone：送出動作完成（成功以確認信為準）
+ */
+function submitViaIframe(payload, onDone, onFail){
+  try {
+    const iframeName = 'submit_' + Date.now();
+    const iframe = document.createElement('iframe');
+    iframe.name  = iframeName;
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+
+    const form = document.createElement('form');
+    form.action = ENDPOINT;
+    form.method = 'POST';
+    form.target = iframeName;
+    form.style.display = 'none';
+
+    const input = document.createElement('input');
+    input.type  = 'hidden';
+    input.name  = 'payload';
+    input.value = JSON.stringify(payload);
+    form.appendChild(input);
+
+    document.body.appendChild(form);
+    form.submit();
+
+    setTimeout(() => {
+      onDone();
+      setTimeout(() => {
+        try { document.body.removeChild(form); } catch(e){}
+        try { document.body.removeChild(iframe); } catch(e){}
+      }, 3000);
+    }, 1200);
 
   } catch (err) {
     console.error('[報名表單] 送出失敗', err);
-    showBanner('送出失敗：' + (err.message || err) + '｜若持續發生請私訊 @eli_____trades 報名');
-    btn.disabled = false;
-    btn.textContent = '送出報名';
+    if (onFail) onFail();
   }
-});
+}
 
 
 /* ═══════════════════════════════════════════
